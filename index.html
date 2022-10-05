@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function validar(){
+            nome = document.getElementById("txtUser").value;
+            senha = document.getElementById("txtSenha").value;
+
+            if(nome == "" && senha==""){
+                alert("Usuário e senha em branco")
+                document.getElementById("txtUser").focus();
+            }
+            else if(nome==""){
+                alert("Usuário em branco");
+                document.getElementById("txtUser").focus();
+            }
+            else if(senha==""){
+                alert("Senha em branco")
+                document.getElementById("txtSenha").focus();
+            }
+            
+            user = {nome:`${nome}`,senha:`${senha}`}
+
+            if (typeof(Storage) != "undefined") {
+                localStorage.setItem("user",JSON.stringify(user));
+            }
+                else alert("Navegador não oferece suporte a localStorage!!!");
+
+        }
+    </script>
+</head>
+<body>
+    <form action="">
+        <label for="">Usuário</label>
+        <br>
+        <input type="text" id="txtUser">
+        <br><br>
+        <label for="">Senha</label>
+        <br>
+        <input type="password" id="txtSenha">
+        <br><br>
+        <input type="button" value="Cadastrar" onclick="validar()">
+        <input type="reset" value="Limpar">
+        <br>
+        <p><a href="listarUsuario.html">Mostar usuário cadastrado</a></p>
+
+
+
+    </form>
+</body>
+</html>
